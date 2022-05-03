@@ -1,17 +1,11 @@
 <template>
-  <div>
-    <h1 class="text-2xl">Hello Fajsrul</h1>
-  </div>
-
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/list">list</router-link>
+  </nav>
+  <router-view/>
 </template>
 
-<script>
-
-export default {
-  components: {
-  }
-}
-</script>
-
 <style>
+
 </style>
