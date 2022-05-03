@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "pink-navbar",
+  name: "NavbarComponent",
   data() {
     return {
       showMenu: false
