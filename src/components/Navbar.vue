@@ -14,15 +14,13 @@
             <div v-bind:class="{ 'hidden': !showMenu, 'flex': showMenu }" class="lg:flex lg:flex-grow items-center">
                 <ul class="flex flex-col lg:flex-row list-none ml-auto">
                     <li class="nav-item">
-                        <router-link class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                            to="/">
+                        <router-link class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" to="/">
                             <i class="fab fa-twitter text-lg leading-lg text-white opacity-75" /><span
                                 class="ml-2">Home</span>
                         </router-link>
                     </li>
-                     <li class="nav-item">
-                        <router-link class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                            to="/about">
+                    <li class="nav-item">
+                        <router-link class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" to="/about">
                             <i class="fab fa-twitter text-lg leading-lg text-white opacity-75" /><span
                                 class="ml-2">About Me</span>
                         </router-link>
@@ -35,16 +33,16 @@
 
 <script>
 export default {
-  name: "NavbarComponent",
-  data() {
-    return {
-      showMenu: false
+    name: "NavbarComponent",
+    data() {
+        return {
+            showMenu: false
+        }
+    },
+    methods: {
+        toggleNavbar() {
+            this.showMenu = !this.showMenu;
+        }
     }
-  },
-  methods: {
-    toggleNavbar: function(){
-      this.showMenu = !this.showMenu;
-    }
-  }
 }
 </script>
