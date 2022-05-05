@@ -13,7 +13,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <input type="text" id="table-search"
+                    <input type="text" id="table-search" @input="changeSearch($event)"
                         class="text-black bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5"
                         placeholder="Search for items">
                 </div>
@@ -21,24 +21,36 @@
             <table class="w-full text-sm text-lef">
                 <thead class="text-xs bg-gray-900">
                     <tr>
-                        <th v-for="index in columntitle.length" :key="index" scope="col" class="px-6 py-3">
-                            {{columntitle[index]}}
+                        <th class="px-6 py-3">
+                            No
+                        </th>
+                        <th v-for="(item, index) in columntitle" :key="index" class="px-6 py-3">
+                            {{ item }}
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-slate-700 hover:bg-slate-600">
-                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap">
-                            Magic Mouse 2
+                    <tr v-for="(item, index) in columndatas" :key="index" class="bg-slate-700 hover:bg-slate-600">
+                        <th scope="row" class="px-6 py-4 font-medium  ">
+                            {{ index + 1 }}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium  ">
+                            {{ item.asset_id }}
                         </th>
                         <td class="px-6 py-4">
-                            Black
+                            {{ item.name }}
                         </td>
                         <td class="px-6 py-4">
-                            Accessories
+                            {{ item.price_usd }}
                         </td>
                         <td class="px-6 py-4">
-                            $99
+                            {{ item.volume_1hrs_usd }}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${{ item.volume_1day_usd }}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${{ item.volume_1mth_usd }}
                         </td>
                     </tr>
                 </tbody>
@@ -50,11 +62,24 @@
 <script>
 export default {
     name: 'TableComponent',
+    data() {
+        return {
+            columndatas: [],
+            search: ''
+        }
+    },
     props: {
         title: String,
-        columntitle: Array
+        columntitle: Array,
+        columndatasProps: Array,
     },
-
-
+    mounted() {
+        this.columndatas = this.columndatasProps
+    },
+    methods: {
+        changeSearch(event) {
+            this.columndatas = this.columndatasProps.filter(v => v.name.includes(event.target.value));
+        }
+    }
 }
 </script>

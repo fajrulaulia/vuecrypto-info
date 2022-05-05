@@ -1,13 +1,14 @@
 <template>
   <div class="home">
-    <p>Home View</p>
-    <Table title="Assets" v-bind:columntitle="assets.colums" />
+    <h1 class="text-center text-xl font-semibold">Welcome to Crypto Info - Lisitng Asset today!!!</h1>
+    <Table title="Assets" v-bind:columntitle="assets.colums" v-bind:columndatasProps="assets.datas" />
 
   </div>
 </template>
 
 <script>
 import Table from '../components/Table.vue'
+import datas from '../dummy/assest.json'
 export default {
   name: 'HomeView',
   components: {
@@ -16,7 +17,8 @@ export default {
   data: () => {
     return {
       assets: {
-        colums: ['Asset Code', 'Asset Name', "Price", "Volume 1h", "Volume 1m", "Volume 1y"]
+        colums: ['Asset Code', 'Asset Name', "Price", "Volume 1h", "Volume 1m", "Volume 1y"],
+        datas: datas,
       }
     }
   }

@@ -1,5 +1,9 @@
 <template>
   <div class="Detail">
-    <h1>This is an About page</h1>
+    <h1 class="text-center text-xl font-semibold">About me</h1>
+    <p >
+      Hmm, I lose 30% my money in crypto 😭 
+     
+    </p>
   </div>
 </template>
