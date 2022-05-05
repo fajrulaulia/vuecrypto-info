@@ -78,7 +78,7 @@ export default {
     },
     methods: {
         changeSearch(event) {
-            this.columndatas = this.columndatasProps.filter(v => v.name.includes(event.target.value));
+            this.columndatas = this.columndatasProps.filter(v => v.name.includes(event.target.value) || v.asset_id.includes(event.target.value));
         }
     }
 }
