@@ -42,7 +42,14 @@ export default {
 
       axios(config)
         .then(res => this.datas = res.data)
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err.message)
+          if (err.message === "Request failed with status code 429") {
+            alert("Error: Kena limit bre")
+            return
+          }
+          alert("Error: ini kurang ngerti kenapa, cak check log bree")
+        });
     }
   }
 }
