@@ -75,11 +75,17 @@ export default {
     },
     mounted() {
         this.columndatas = this.columndatasProps
+        console.log("this.columndatasProps", this.columndatasProps)
     },
     methods: {
         changeSearch(event) {
             this.columndatas = this.columndatasProps.filter(v => v.name.includes(event.target.value) || v.asset_id.includes(event.target.value));
         }
-    }
+    },
+    // watch: {
+    //     columndatasProps (value) {
+    //         this.columndatas = value
+    //     }
+    // },
 }
 </script>
