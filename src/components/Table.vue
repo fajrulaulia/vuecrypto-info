@@ -13,7 +13,8 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <input type="text" id="table-search" @input="changeSearch($event)"
+                    
+                    <input type="text" id="table-search" @input="tableSearchHandler($event)"
                         class="text-black bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5"
                         placeholder="Search for items">
                 </div>
@@ -62,30 +63,11 @@
 <script>
 export default {
     name: 'TableComponent',
-    data() {
-        return {
-            columndatas: [],
-            search: ''
-        }
-    },
     props: {
         title: String,
         columntitle: Array,
-        columndatasProps: Array,
+        columndatas: Array,
+        tableSearchHandler: Function
     },
-    mounted() {
-        this.columndatas = this.columndatasProps
-        console.log("this.columndatasProps", this.columndatasProps)
-    },
-    methods: {
-        changeSearch(event) {
-            this.columndatas = this.columndatasProps.filter(v => v.name.includes(event.target.value) || v.asset_id.includes(event.target.value));
-        }
-    },
-    // watch: {
-    //     columndatasProps (value) {
-    //         this.columndatas = value
-    //     }
-    // },
 }
 </script>

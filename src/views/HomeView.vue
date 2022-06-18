@@ -1,14 +1,15 @@
 <template>
   <div class="home">
     <h1 class="text-center text-xl font-semibold">Welcome to Crypto Info - Lisitng Asset today!!!</h1>
-    <Table title="Assets" v-bind:columntitle="assets.colums" v-bind:columndatasProps="datas" />
-
+    <Table title="Assets" v-bind:tableSearchHandler="searchData" v-bind:columntitle="assets.colums"
+      v-bind:columndatas="datastemp" />
   </div>
 </template>
 
 <script>
 import Table from '../components/Table.vue'
 import axios from 'axios'
+import dummy from '../dummy/assest.json'
 export default {
   name: 'HomeView',
   components: {
@@ -21,14 +22,24 @@ export default {
         loading: false
       },
       datas: [],
+      datastemp: []
 
     }
   },
 
   async mounted() {
-    await this.getAssets()
+    //  await this.getAssets()
+    this.datas = dummy
+    this.datastemp = dummy
+
   },
   methods: {
+    onClickNow() {
+      this.$child.childFunction();
+    },
+    searchData(event) {
+      this.datastemp = this.datas.filter(v => v.name.includes(event.target.value) || v.asset_id.includes(event.target.value));
+    },
     getAssets() {
       var config = {
         method: 'get',
@@ -41,7 +52,10 @@ export default {
       };
 
       axios(config)
-        .then(res => this.datas = res.data)
+        .then(res => {
+          this.datas = res.data
+          this.datastemp = res.data
+        })
         .catch(err => {
           console.log(err.message)
           if (err.message === "Request failed with status code 429") {
