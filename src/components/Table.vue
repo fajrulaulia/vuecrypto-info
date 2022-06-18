@@ -39,7 +39,7 @@
                             {{ item.asset_id }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ item.name }}
+                           {{ item.name }}
                         </td>
                         <td class="px-6 py-4">
                             {{ item.price_usd }}

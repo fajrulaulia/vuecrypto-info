@@ -28,9 +28,13 @@ export default {
   },
 
   async mounted() {
-    //  await this.getAssets()
-    this.datas = dummy
-    this.datastemp = dummy
+    if (process.env.VUE_APP_USE_DUMMY === "1") {
+      this.datas = dummy
+      this.datastemp = dummy
+      console.log("get data as dummy")
+    } else {
+      await this.getAssets()
+    }
 
   },
   methods: {
