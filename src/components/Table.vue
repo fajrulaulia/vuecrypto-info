@@ -31,6 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr v-if="columndatas===null || columndatas.length<1"><td colspan="6"><p class="text-center font-bold">Sedang Mengambil data dari coin api, mohon menunggu ...</p></td></tr>
                     <tr v-for="(item, index) in columndatas" :key="index" class="bg-slate-700 hover:bg-slate-600">
                         <th scope="row" class="px-6 py-4 font-medium  ">
                             {{ index + 1 }}
